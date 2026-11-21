@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-  apiKey: "AIza...",
-  authDomain: "mis-finanzas-xxxxx.firebaseapp.com",
-  projectId: "mis-finanzas-xxxxx",
-  storageBucket: "mis-finanzas-xxxxx.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "1:123456789:web:abc123"
+  apiKey: "AIzaSyDje62-BIkMjqzB426ajVtNFG1MdbRm8Lg",
+  authDomain: "mis-finanzas-730d3.firebaseapp.com",
+  projectId: "mis-finanzas-730d3",
+  storageBucket: "mis-finanzas-730d3.firebasestorage.app",
+  messagingSenderId: "73403876727",
+  appId: "1:73403876727:web:3f8972f8247ff2cf714d72"
 };
