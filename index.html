@@ -219,9 +219,9 @@ $("mes").innerHTML=MF.map((x,i)=>`<option value="${i}">${x}</option>`).join("");
 render();
 </script><script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{})</script>
 <script type="module">
-import {firebaseConfig} from "./firebase-config.js";
 const $=id=>document.getElementById(id),cs=$("cs"),au=$("auth"),msg=$("am"),log=s=>cs.textContent=s;
 $("aloc").onclick=()=>{au.style.display="none"};
+try{const {firebaseConfig}=await import("./firebase-config.js?v="+Date.now());
 if(!firebaseConfig.apiKey||firebaseConfig.apiKey.startsWith("PEGA")){msg.textContent="Falta pegar tu configuración de Firebase en firebase-config.js. Mientras tanto puedes usarlo solo en este dispositivo."}
 else{
 const B="https://www.gstatic.com/firebasejs/10.12.2/";
@@ -235,4 +235,5 @@ unsub=onSnapshot(ref,s=>{if(s.metadata.hasPendingWrites)return;if(s.exists()){co
 const go=async f=>{msg.textContent="";try{const u=$("ae").value.trim().toLowerCase().replace(/\s+/g,"");await f(auth,u.includes("@")?u:u+"@mis-finanzas.app",$("ap").value)}catch(e){msg.textContent=({"auth/invalid-credential":"Usuario o contraseña incorrectos","auth/email-already-in-use":"Ese usuario ya existe: pulsa Entrar","auth/weak-password":"La contraseña debe tener 6 o más caracteres","auth/invalid-email":"Usuario no válido (solo letras y números)"})[e.code]||e.code}};
 $("ain").onclick=()=>go(signInWithEmailAndPassword);$("acr").onclick=()=>go(createUserWithEmailAndPassword);$("out").onclick=()=>signOut(auth);
 }
+}catch(e){msg.textContent="No se pudo cargar Firebase: "+(e&&e.message||e)+". Revisa el archivo firebase-config.js."}
 </script></body></html>
